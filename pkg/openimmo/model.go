@@ -1,4 +1,3 @@
-
 package openimmo
 
 import "encoding/xml"
@@ -7,6 +6,9 @@ import "encoding/xml"
 type Openimmo struct {
 	XMLName      xml.Name `xml:"openimmo" json:"openimmo,omitempty"`
 	Text         string   `xml:",chardata" json:"text,omitempty"`
+	Xsi          string   `xml:"xsi,attr"`
+	Xsd          string   `xml:"xsd,attr"`
+	Xmlns        string   `xml:"xmlns,attr"`
 	Uebertragung struct {
 		Text           string `xml:",chardata" json:"text,omitempty"`
 		Art            string `xml:"art,attr" json:"art,omitempty"`
@@ -50,7 +52,7 @@ type Openimmo struct {
 				} `xml:"pfad" json:"pfad,omitempty"`
 			} `xml:"daten" json:"daten,omitempty"`
 		} `xml:"anhang" json:"anhang,omitempty"`
-		Immobilie struct {
+		Immobilie []struct {
 			Text            string `xml:",chardata" json:"text,omitempty"`
 			Objektkategorie struct {
 				Text        string `xml:",chardata" json:"text,omitempty"`
@@ -1265,7 +1267,7 @@ type Openimmo struct {
 			} `xml:"freitexte" json:"freitexte,omitempty"`
 			Anhaenge struct {
 				Text   string `xml:",chardata" json:"text,omitempty"`
-				Anhang struct {
+				Anhang []struct {
 					Text        string `xml:",chardata" json:"text,omitempty"`
 					Location    string `xml:"location,attr" json:"location,omitempty"`
 					Gruppe      string `xml:"gruppe,attr" json:"gruppe,omitempty"`
@@ -1499,5 +1501,4 @@ type Openimmo struct {
 	UserDefinedAnyfield struct {
 		Text string `xml:",chardata" json:"text,omitempty"`
 	} `xml:"user_defined_anyfield" json:"user_defined_anyfield,omitempty"`
-} 
-
+}

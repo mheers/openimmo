@@ -1,3 +1,3 @@
-module github.com/ASVBPREAUBV/openimmo
+module github.com/mheers/openimmo
 
-go 1.14
+go 1.22
